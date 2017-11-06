@@ -1,0 +1,249 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spardha</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300|Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <!--header-->
+    <header class="main-header parallax" id="header" style="height: 100"%>
+        <div class="bg-color">
+            <!--nav-->
+            <nav class="nav navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="fa fa-bars"></span>
+                        </button>
+                            <a href="/" class="navbar-brand"><img style="height:28px" class="img-responsive" src="{% static 'img/spardha-small-text.png' %}"  ></a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="/">Home</a></li>
+                                <li><a href="/events">Events</a></li>
+                                <li><a href="/ourteam">Our Team</a></li>
+                                <li><a href="/login">{{ login }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!--/ nav-->
+            <div class="container text-center">
+                <div class="wrapper wow fadeInUp delay-05s" > 
+                   <h2 class="top-title"><img src="{% static 'img/spardha-logo-all-white.png' %}" width="35%"></h2>
+                    <h3 class="title">Spardha'17</h3>
+                    <h4 class="sub-title">OCTOBER 27-29, 2017</h4>
+                     <a href="/register" class="btn btn-submit">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/ header-->
+    <!---->
+    <!---->
+    <!---->
+    <section id="feature" class="section-padding">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-3 wow fadeInLeft delay-05s">
+                    <div class="section-title">
+                        <h2 class="head-title">Stats</h2>
+                        <hr class="botm-line wow fadeInLeft delay-08s">
+                        <p class="sec-para">In last 33 editions we have been capturing hearts of all the participants with the fest.</p>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="col-md-6 wow fadeInRight delay-02s">
+                        <div class="icon">
+                            <i class="fa fa-child" aria-hidden="true"></i>
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">35000 Footfall</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-02s">
+                        <div class="icon">
+                            <i class="fa fa-university" aria-hidden="true"></i>
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">250 Registered Colleges</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-04s">
+                        <div class="icon">
+                            <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">19 Events</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-04s">
+                        <div class="icon">
+                            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">30000 Likes</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-padding parallax bg-image-2 section wow fadeIn delay-08s" id="cta-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="cta-txt">
+                        <h3>Register You College</h3>
+                        <p>Register your college in fest to get ready for adventurous journey.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <a href="/register" class="btn btn-submit">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---->
+    <!---->
+    <section class="section-padding wow fadeInUp delay-02s" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div class="section-title">
+                        <h2 class="head-title">Throwback</h2>
+                        <hr class="botm-line wow fadeInLeft delay-08s">
+                        <p class="sec-para">A look back at successful Spardha'16.</p>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-12">
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="{% static 'img/1.jpg' %}" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="{% static 'img/2.jpg' %}" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="{% static 'img/3.jpg' %}" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="{% static 'img/4.jpg' %}" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="{% static 'img/5.jpg' %}"                            " alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="{% static 'img/6.jpg' %}" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---->
+    <!---->
+    <section class="section-padding wow fadeInUp delay-05s" id="contact">
+        <div class="container">
+            <div class="row white">
+                <div class="col-md-8 col-sm-12">
+                    <div class="section-title">
+                        <h2 class="head-title black">Contact Us</h2>
+                        <hr class="botm-line wow fadeInLeft delay-08s">
+                        <p class="sec-para black"><!--fill desc--></p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="col-md-4 col-sm-6" style="padding-left:0px;">
+                     
+                           <h3 class="cont-title">Follow Us</h3>
+                                <div class="follow">
+                                    <a href="https://www.facebook.com/Spardha.IIT.BHU/" class="btn btn-fb">
+                                    <i class="fa fa-facebook" style="padding-right: 10px"></i>Facebook</a>
+
+                                    <a href="https://www.instagram.com/spardha_iitbhu/" class="btn btn-insta">
+                                    <i class="fa fa-instagram" style="padding-right: 10px"></i>Instagram</a>
+                                    <a href="https://www.linkedin.com/company-beta/13326821/" class="btn btn-ln">
+                                    <i class="fa fa-linkedin" style="padding-right: 10px"></i>Linkedin</a>
+
+                                </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <h3 class="cont-title">Visit Us</h3>
+                        <div class="location-info">
+                            <p class="white"><span aria-hidden="true" class="fa fa-map-marker"></span>Spardha Office, IIT(BHU) Gymkhana, IIT(BHU) Varanasi - 221005</p>
+                            <p class="white"><span aria-hidden="true" class="fa fa-phone"></span>Reg &amp; Enq: +91 9012-737-504
+                            </p>
+                            <p class="white"><span aria-hidden="true" class="fa fa-phone"></span>Branding: +91 7379-690-146
+                            </p>
+                            <p class="white"><span aria-hidden="true" class="fa fa-phone"></span>Events :
+                            +91 9456-623-801
+                            </p>
+                            <p class="white"><span aria-hidden="true" class="fa fa-envelope"></span>Email : <a href="" class="link-dec"> spardha@iitbhu.ac.in</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-icon-container hidden-md hidden-sm hidden-xs">
+                            <span aria-hidden="true" class="fa fa-envelope-o"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---->
+    <!---->
+    <footer class="" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 footer-copyright">
+                    ©Spardha - All rights reserved
+                    <div class="credits">
+                        Designed by <a href="#">Abhinav</a>
+                    </div>
+                </div>
+                <div class="col-sm-5 footer-social">
+                    <div class="pull-right hidden-xs hidden-sm">
+                        <a href="/adminlogin"> Admin Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!---->
+    <!--contact ends-->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/wow.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'contactform/contactform.js' %}"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,108 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{% static 'css/reg.css' %}">
+<style>
+th, td {
+    padding: 5px;
+}
+th {
+    text-align: left;
+}
+</style>
+		    <!-- <script src="js/reg.js"></script> -->
+   <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/wow.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<!-- Website CSS style -->
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+		<!-- Website Font style -->
+   		<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+	    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
+
+		<title>{{ collegename }}</title>
+	</head>
+	<body>
+            <!--nav-->
+            <nav class="nav navbar-default navbar-fixed-top" style="background: black">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="fa fa-bars"></span>
+                        </button>
+                            <a href="/" class="navbar-brand"><img style="height:28px" class="img-responsive" src="{% static 'img/spardha-small-text.png' %}"  ></a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="/user">Students</a></li>
+                                <li><a href="/games">Register</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="container" style="background: #009edf;color:white; padding:20px;margin-top:15px;text-align: center;">
+           		<!-- <h1 style="text-align: center;"> Colleges Registered</h1> -->
+           	                          <h2 style="text-align: center;color: black"> Students- {{ collegename }} for Spardha'17:</h2>
+                       <table style="width:100%;color: white;float: center;text-align: center">
+                            <tr style="float: center;text-align: center;color: black">
+                              <td><b><h3>S No.</h3></b></td>
+                              <td><b><h3>Name</h3></b></td>
+                              <td><b><h3>Sex</h3></b></td> 
+                              <td><b><h3>Year</h3></b></td>
+                              <td><b><h3>Contact</h3></b></td>
+                            </tr>
+                              {% for student in students %}
+                              <tr style="float: center;text-align: center">
+                              <td style="float: center;text-align: center">{{ forloop.counter }}</td>
+                              <td> {{ student.0 }}</td>
+                              <td>{{ student.1 }}</td>
+                              <td>{{ student.2 }}</td>
+                              <td>{{ student.3 }}</td>
+                              <td style="padding: 5px"> 
+                                <form class="" style="float: center;text-align: center;" id="del" method="post" action="/user">
+                                {% csrf_token %} 
+                                <button type="submit" name="del" form="del" class="btn btn-primary" value= {{ student.4 }} >Delete</button>
+                              </form>
+                            </td>
+                            {% endfor %}
+                          </table>
+
+                          <p style="color: red;text-align: center;float: center"> {{ error }} </p>
+
+                    <form class="" style="float: center;text-align: center;" method="post"  action="/user">
+                        {% csrf_token %} 
+                        <input type="text" style="color: black;" required="true"  placeholder="Enter student's name" name="name"/>
+                        <select class="" required="true" style="color: black;" name="sex" id="sex">
+                          <option disabled selected value> -- select sex -- </option>
+                          <option value="M" >M</option>
+                          <option value="F" >F</option>                   
+                        </select>  
+                        <input type="number" required="true" style="color: black;" placeholder="Enter his year" name="year"/>  
+                        <input type="text" style="color: black;" required="true"  placeholder="Enter student's contact" name="contact"/>                        
+                        <input type="submit" name="submit" value="+" style="color: green">
+                     
+                   </form>
+
+           </div>
+
+
+		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+	</body>
+</html>

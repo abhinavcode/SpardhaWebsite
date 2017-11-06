@@ -1,0 +1,25 @@
+create table students(name varchar(20) not null,regid int primary key auto_increment, sex char(1) not null,year_of_study int not null, contact int not null,collegeid int,foreign key(collegeid) references colleges(id));
+
+create table event(name varchar(20) not null, for_sex char(1), primary key(name,for_sex));
+
+create table event_reg(event_name varchar(20) not null,  event_for char(1) not null, student_id int not null, isCaptain int not null,foreign key(event_name,event_for) references event(name,for_sex) on delete cascade, foreign key(student_id) references students(regid) on delete cascade);
+
+
+create table coach(name varchar(20) not null, regid int auto_increment primary key, pic varchar(100), sex char(1) not null,contact int not null);
+
+	create table colleges(id int primary key auto_increment,collegeName varchar(100) not null,name varchar(100) not null, designation varchar(100) not null, contact bigint not null, city varchar(100) not null, email varchar(100) not null, contigentSize int not null);
+
+alter table colleges auto_increment=1;
+
+	create table admin(id varchar(200) not null primary key,password varchar(200) not null);
+
+create table collegelogin(id int not null,password varchar(200) not null ,primary key(id), foreign key(id) references colleges(id));
+
+create table teams(name varchar(100) primary key not null);
+
+create table orgteam(contactno bigint not null primary key, name varchar(200) not null, post varchar(200) not null, whichteam varchar(100) not null, foreign key(whichteam) references teams(name),pic mediumblob not null);
+
+
+create table fixture(id int auto_increment primary key,team1 int not null, team2 int, eventname varchar(20) not null, event_for char(1) not null,location varchar(100) not null, time time not null, date date not null,foreign key(eventname,event_for) references event(name,for_sex) on delete cascade, foreign key(team1) references colleges(id) on delete cascade,foreign key(team2) references colleges(id) on delete cascade);
+
+create table result(fixtureid int primary key, winner int not null, foreign key(fixtureid) references fixture(id) on delete cascade, foreign key(winner) references colleges(id) on delete cascade);

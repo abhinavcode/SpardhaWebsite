@@ -1,0 +1,153 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{% static 'css/reg.css' %}">
+
+		    <!-- <script src="js/reg.js"></script> -->
+   <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/wow.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<!-- Website CSS style -->
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+		<!-- Website Font style -->
+   		<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+	    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
+
+		<title>Team Management</title>
+	</head>
+	<body>
+            <!--nav-->
+            <nav class="nav navbar-default navbar-fixed-top" style="background: black">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="fa fa-bars"></span>
+                        </button>
+                            <a href="/" class="navbar-brand"><img style="height:28px" class="img-responsive" src="{% static 'img/spardha-small-text.png' %}"  ></a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+                            <ul class="nav navbar-nav">
+                                <li><a href="/admin1">Colleges</a></li>
+                                <li ><a href="/adminteam">Our Team</a></li>
+                                <li class="active"><a href="/adminfixtures">Fixtures</a></li>
+                                <li><a href="/adminresults">Results</a></li>
+                                <li><a href="/adminlogout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+           <div class="container" style="background: #009edf;color:white; padding:20px;margin-top:100px">
+             <div class="col-md-12" >
+                    <h2 style="text-align: center;color: black"> Fixtures:</h2>
+
+                       <table width="100%">
+                         <tr style="float: center;text-align: center;">
+                                <td style="color: black"><b><h2>Team 1</h2></b></td> 
+                                <td style="color: black"><b><h2>Team 2</h2></b></td>
+                                <td style="color: black"><b><h2>Game</h2></b></td>
+                                <td style="color: black"><b><h2>Event date</h2></b></td>
+                              
+                        </tr>
+                        {% for event in fixtures %}
+                        <tr style="float: center;text-align: center;">
+                                <td>{{ event.0 }}</td> 
+                                <td>{{ event.1 }}</td>
+                                <td>{{ event.2 }}({{ event.3 }})</td>
+                                <td>{{ event.4 }}</td>
+                                <td><form class="" style="float: center;text-align: center;" id="del" method="post" action="/adminfixtures">
+                                {% csrf_token %} 
+                                <button type="submit" name="del" form="del" class="btn btn-primary" value= {{ event.5 }} >Delete</button>
+                              </form></td>
+                              
+                        </tr>
+                            {% endfor %}
+                        </table>
+
+
+
+                    <h2 style="text-align: center;color: black"> Add new Fixture:</h2>
+                       <h2><p style="text-align: center;float: center;color: red"> {{ error }}</p></h2>
+                        {% for event in events %}
+                              <h3 style="text-align: center;color: black">{{ event.0 }}, {{ event.1 }} </h3>
+                        
+                      <form class="" enctype="multipart/form-data" style="float: center;text-align: center;margin-top:5px;color: black;border: 1px solid white;padding:5px" method="post" action="/adminfixtures">
+
+
+                        {% csrf_token %} 
+
+                        <select class="" style="color: black" required="true" name="team1" id="team1"  placeholder="Select Team1">
+                        <option disabled selected value> -- select a team -- </option>
+                       {% for name in event.2 %}
+                            <option value={{ name.1 }} >{{ name.0 }}</option>
+                        {% endfor %}
+                      </select> 
+
+                        <select style="color:black" class="" name="team2" id="team2"  placeholder="Select Team2">
+                        <option disabled selected value> -- select a team -- </option>
+                       {% for name in event.2 %}
+                            <option value={{ name.1 }} >{{ name.0 }}</option>
+                        {% endfor %}
+                      </select> 
+
+                            
+                      <input type="hidden" name="eventname" value="{{ event.0 }}">
+
+                      <input type="hidden" name="sex" value="{{ event.1 }}">
+
+                      <input type="text" style="color: black" name="location" placeholder="Enter Game location"/>
+
+                      <input type="date" style="color: black" name="date">
+
+                      <input type="time" style="color: black" name="time">
+                      <br/><br/>
+                      <input type="submit" name="submit" class="btn-primary"><br/>
+                    </form>
+
+                      <hr>
+                            {% endfor %}
+
+                          </div>
+                      
+                    {% for member in ourteam %}
+                    <div class="row">
+                    <div class="col-md-12" style="background-color: white;color: black;border: 2px solid white;border-radius: 25px">
+                      <div class="col-md-3">
+                        <img style="margin-top:4px;border: 5px solid #009edf ; border-radius: 25px; top:350%;left: 50%;position: absolute;
+transform: translateX(-50%) translateY(-50%);" class="img-responsive" src="data:image/png;base64,{{ member.4 }}"> <br/>
+                      </div>
+                      <div class="col-md-9" style="float: center;text-align: center">
+                        <b><h2> {{ member.1 }} </h2></b>
+                        <h3 style="color: #009edf">{{ member.2 }}, {{ member.3 }}</h3>
+                        <h3>{{ member.0 }}</h3>
+                            
+                      </div>
+
+                    </div>
+                  </div>
+                    <br/>
+                    {% endfor %}
+                  
+                    
+               
+          </div>
+           </div>
+
+		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+	</body>
+</html>
