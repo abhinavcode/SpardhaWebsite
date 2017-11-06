@@ -3,7 +3,12 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 
+from django.db import connection
+import json
+from django.http import HttpResponse
+from django.core import serializers
 import MySQLdb
 import random
 import string
@@ -53,6 +58,52 @@ def team(request):
 	else:
 		name="LOGIN"
 	return render(request,'spardha/team.html',{"login":name,"ourteam":getteam()})
+
+def date_handler(obj):
+    if hasattr(obj, 'isoformat'):
+        return obj.isoformat()
+    else:
+        raise TypeError(
+            "Unserializable object {} of type {}".format(obj, type(obj))
+        )
+
+def badsc(request):
+	q="select c.collegeName,d.collegeName,f.location,f.date,f.time from fixture f, colleges c, colleges d where eventname='Badminton' and c.id=f.team1 and d.id=f.team2"
+	c=db.cursor()
+	c.execute(q)
+	p=c.fetchall()
+	s=""
+	for x in p:
+		f='{ "eventname":"", "team1":"%s","team2":"%s","location":"%s","date":"%s","time":"%s"}' %(x[0],x[1],x[2],x[3],x[4])
+		print f
+		s=s+f+","
+	v="["+s[:-1]+"]"
+	#o=tuple(v)
+	#json_data=json.dumps(o)
+
+	print s
+	return HttpResponse(v, content_type="application/json")
+
+def badres(request):
+	
+	q="select c.collegeName  , d.collegeName  , e.collegeName, f.eventname,f.event_for, f.date from fixture f, result r, colleges c, colleges d, colleges e where f.id=r.fixtureid and c.id=f.team1 and d.id=f.team2 and e.id=r.winner and f.eventname='Badminton' order by date"
+	c=db.cursor()
+	c.execute(q)
+	p=c.fetchall()
+	s=""
+	for x in p:
+		l=x[3]+", "+x[4]+", "+str(x[5])
+		f='{ "eventname":"%s", "team1":"%s","team2":"%s","winner":"%s"}' %(l,x[0],x[1],x[2])
+		print f
+		s=s+f+","
+	v="["+s[:-1]+"]"
+	#o=tuple(v)
+	#json_data=json.dumps(o)
+
+	print s
+	return HttpResponse(v, content_type="application/json")
+
+
 
 def getevents():
 	q="select distinct(name),img from event"

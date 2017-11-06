@@ -20,5 +20,5 @@ urlpatterns = [
     url(r'^college/(?P<num>[0-9]+)/$', views.collegedesc, name='collegedesc'),
     url(r'^events/', views.events, name='events'),
     url(r'^badmintonschedule/', views.badsc, name='badmintonschedule'),
-
+    url(r'^badmintonresult/', views.badres, name='badmintonresult'),
 ]
