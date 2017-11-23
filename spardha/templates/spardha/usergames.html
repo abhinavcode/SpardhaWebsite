@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head> 
+    <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{% static 'css/reg.css' %}">
 <style>
@@ -60,33 +60,33 @@ th {
                             {% for event in events %}
                               <h3 style="text-align: center;color: black">{{ event.0 }}, {{ event.1 }} </h3>
                                 {% for name in event.2 %}
-                                 <p style="color: white">{{ name }}</p>  
+                                 <p style="color: white">{{ name }}</p>
 
                               {% endfor %}
                             {% endfor %}
 
                                  <p style="color: red;text-align: center;float: center">  {{ errorform }}</p>
                                  <form class="" style="float: center;text-align: center;color: black" method="post" action="/games">
-            
-                                      {% csrf_token %} 
+
+                                      {% csrf_token %}
                                         <select class="" required="true" name="studentid" id="studentid"  >
                                         <option disabled selected value> -- select player name -- </option>
-                                        {% for student in students %}    
+                                        {% for student in students %}
                                             <option value={{ student.4 }} >{{ student.0 }}</option>
                                         {% endfor %}
-                                      </select>  
+                                      </select>
                                       <select class="" required="true" name="eventname" id="eventname"  >
                                         <option disabled selected value> -- select event name -- </option>
-                                        {% for event in allevents %}    
-                                            <option value={{ event.0 }} >{{ event.0 }}</option>
+                                        {% for event in allevents %}
+                                            <option value="{{ event.0 }}" >{{ event.0 }}</option>
                                         {% endfor %}
-                                      </select>                                        
+                                      </select>
 
-                                      Captain <input type="checkbox" name="iscaptain" id="iscaptain" value=1 > 
+                                      Captain <input type="checkbox" name="iscaptain" id="iscaptain" value=1 >
                                       <input type="submit" name="submit" value="+" style="color: green">
-                                      
+
                                 </form>
-                          
+
 
            </div>
 

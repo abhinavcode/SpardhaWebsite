@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head> 
+    <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{% static 'css/reg.css' %}">
 
@@ -60,15 +60,15 @@
                      					{% endfor %}
                      			</h3>
                     <form class="" style="float: center;text-align: center;" method="post" action="/adminteam">
-                        {% csrf_token %} 
-                        <input type="text" style="color: black;" placeholder="Enter new team" name="post"/>  
+                        {% csrf_token %}
+                        <input type="text" style="color: black;" placeholder="Enter new team" name="post"/>
                         <input type="submit" name="submit" value="+" style="color: green">
-                     
+
                    </form>
              </div>
              <div class="col-md-9">
                     <h2 style="text-align: center;color: black"> Our Team:</h2>
-                    
+
                     {% for member in ourteam %}
                     <div class="row">
                     <div class="col-md-12" style="background-color: white;color: black;border: 2px solid white;border-radius: 25px">
@@ -80,19 +80,19 @@ transform: translateX(-50%) translateY(-50%);" class="img-responsive" src="data:
                         <b><h2> {{ member.1 }} </h2></b>
                         <h3 style="color: #009edf">{{ member.2 }}, {{ member.3 }}</h3>
                         <h3>{{ member.0 }}</h3>
-                       
+
                       </div>
 
                     </div>
                   </div>
                     <br/>
                     {% endfor %}
-                  
+
                     <div class="row">
 
-                   
+                   {{ error }}
                     <form class="" enctype="multipart/form-data" style="float: center;text-align: center;margin-top:5px;color: black;border: 1px solid white;padding:5px" method="post" action="/adminteam">
-                        {% csrf_token %} 
+                        {% csrf_token %}
                         <h2 style="float: center;text-align: center;color: black">Add new Member: </h2><br/>
 
                         <div class="col-md-3">
@@ -105,18 +105,18 @@ transform: translateX(-50%) translateY(-50%);" class="img-responsive" src="data:
                         <input type="text" style="color: black;" required="true" placeholder="Enter person's post" name="posts"/>
                         <select class="" required="true" name="team" id="team"  placeholder="Select Team">
                         <option disabled selected value> -- select a team -- </option>
-                        {% for team in teams %}    
-                            <option value={{ team }} >{{ team }}</option>
+                        {% for team in teams %}
+                            <option value="{{ team }}" >{{ team }}</option>
                         {% endfor %}
-                      </select>  
+                      </select>
                       <br/><br/>
                       </div>
                         <br/><br/>
                         <input type="submit" name="submitteam" value="Add to team" class="btn btn-primary">
-                     
+
                    </form>
              </div>
-               
+
           </div>
            </div>
 

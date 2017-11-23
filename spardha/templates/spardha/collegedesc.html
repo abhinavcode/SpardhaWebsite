@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head> 
+    <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{% static 'css/reg.css' %}">
 
@@ -38,10 +38,11 @@
                             <a href="/" class="navbar-brand"><img style="height:28px" class="img-responsive" src="{% static 'img/spardha-small-text.png' %}"  ></a>
                         </div>
                         <div class="collapse navbar-collapse navbar-right" id="mynavbar">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="#header">Colleges</a></li>
-                                <li><a href="/adminteam">Our Team</a></li>
-                                <li><a href="#portfolio">Portfolio</a></li>
+                           <ul class="nav navbar-nav">
+                                <li   class="active"><a href="/admin1">Colleges</a></li>
+                                <li ><a href="/adminteam">Our Team</a></li>
+                                <li><a href="/adminfixtures">Fixtures</a></li>
+                                <li><a href="/adminresults">Results</a></li>
                                 <li><a href="/adminlogout">Logout</a></li>
                             </ul>
                         </div>
@@ -51,7 +52,7 @@
            <div class="container" style="background: #009edf;color:white; padding:20px;margin-top:100px">
            		<!-- <h1 style="text-align: center;"> Colleges Registered</h1> -->
            			<h1 style="text-align: center;color: black"> Captain Details:</h1>
-           		
+
            			<h3 style="text-align: center;">
                   <table style="color: white;width: 100%">
                       <tr>
@@ -60,9 +61,9 @@
                         <td style="color: black"> Contact </td>
 
                         <td style="color: black;"> Event Name</td>
-                        
-                      </tr>    
-                    
+
+                      </tr>
+
            				{% for captain in captains %}
            					  <tr>
                         <td> {{ captain.0 }} </td>
@@ -71,7 +72,7 @@
 
                         <td> {{ captain.2 }} ( {{ captain.3 }} )</td>
 
-                      </tr>    
+                      </tr>
                     <br/><br/>
            					{% endfor %}
                   </table>
@@ -82,13 +83,13 @@
              {% for event in events %}
                               <h3 style="text-align: center;color: black">{{ event.0 }}, {{ event.1 }} </h3>
                                 {% for name in event.2 %}
-                                 <p style="color: white;text-align: center;">{{ name }}</p>  
+                                 <p style="color: white;text-align: center;">{{ name }}</p>
 
               {% endfor %}
               <br/><br/>
             {% endfor %}
            </div>
-           
+
 
 		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

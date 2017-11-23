@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head> 
+    <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{% static 'css/reg.css' %}">
 
@@ -57,13 +57,13 @@
 
                        				{% for game in male %}
                               <div style="background: white">
-                     					<img src="data:image/png;base64,{{ game.1 }}"><br/> 
+                     					<img src="data:image/png;base64,{{ game.1 }}"><br/>
                               {{ game.0 }}<br/><br/>
                             </div><br/>
                      					{% endfor %}
                      			</h3>
 
-                   
+
              </div>
              <div class="col-md-6">
                <h2 style="text-align: center;color: white"> Female Games:</h2>
@@ -78,27 +78,28 @@
                             </div><br/>
                               {% endfor %}
                           </h3>
-                 
-                 
-               
+
+
+
           </div>
            <div class="col-md-12">
              <h2 style="text-align: center;color: black"> Add new Event:</h2>
 
               <form class="" style="float: center;text-align: center;color: black" method="post" enctype="multipart/form-data" action="/adminevents">
-                        {% csrf_token %} 
+                        {% csrf_token %}
                         <input type="text" style="color: black;" placeholder="Enter new game" name="eventname"/>
                           Image:<input required="true" type="file" name="pic" accept="image/*">
 
                           <select class="" required="true" name="eventfor" id="eventfor"  placeholder="Select Sex">
 
-                        <option disabled selected value> -- select sex for event -- </option>
                             <option value="M" >Male</option>
                             <option value="F" >Female </option>
                             <option value="Both">Both</option>
-                        </select>    
+                        </select>
+                        <input type="text" name="contact" placeholder="Enter contact">
+
                         <input type="submit" name="submit" value="+" style="color: green">
-                     
+
                    </form>
            </div>
 
