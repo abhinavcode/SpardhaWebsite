@@ -17,9 +17,6 @@ class student(models.Model):
     weight = models.IntegerField()
     yearOfStudy = models.IntegerField()
     contact = models.BigIntegerField()
-
-    # yearOfStudy = models.DateTimeField(
-    #         default=timezone.now)
     
 class events(models.Model):
     name = models.CharField(max_length=20, primary_key=True)
